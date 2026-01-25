@@ -3,16 +3,25 @@ using UnityEngine;
 [ExecuteAlways]
 public class Map : MonoBehaviour {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Terrain")]
     public Vector3 mapSize;
-    public GameObject topomap;
-    public Camera cam;
+    public GameObject topoMap;
+    public Camera topoCam;
     public GameObject walls;
     public Material groundMat;
 
     public Texture2D groundTexture;
     public Texture2D topoTexture;
 
-    public bool update = false;
+    public bool updateTerrain = false;
+
+
+    [Header("Hex UI")]
+    public GameObject hexGrid;
+    public Camera hexCam;
+    public float hexCamSize;
+    public RenderTexture hexCamTexture;
+    public bool updateHex;
 
     public static Map instance;
 
@@ -51,21 +60,30 @@ public class Map : MonoBehaviour {
     void Update() {
         instance = this;
 
-        if (update) {
-            update = false;
+        if (updateTerrain) {
+            updateTerrain = false;
             
-            topomap.transform.position      = new(mapSize.x / 2, mapSize.y + 10, mapSize.z / 2);
-            cam.transform.position          = new(mapSize.x / 2, mapSize.y + 15, mapSize.z / 2);
+            topoMap.transform.position          = new(mapSize.x / 2, mapSize.y + 10, mapSize.z / 2);
+            topoCam.transform.position          = new(mapSize.x / 2, mapSize.y + 11, mapSize.z / 2);
+            hexGrid.transform.position          = new(hexGrid.transform.position.x, mapSize.y + 12, hexGrid.transform.position.z);
+            hexCam.transform.position           = new(hexCam.transform.position.x, mapSize.y + 13, hexCam.transform.position.z);
 
-            topomap.transform.localScale    = new(mapSize.x, mapSize.z, 1);
-            cam.orthographicSize            = mapSize.z / 2;
-            cam.aspect                      = mapSize.x / mapSize.z;
-            walls.transform.localScale      = new(mapSize.x/10, mapSize.y, mapSize.z/10);
+            topoMap.transform.localScale        = new(mapSize.x, mapSize.z, 1);
+            topoCam.orthographicSize            = mapSize.z / 2;
+            topoCam.aspect                      = mapSize.x / mapSize.z;
+            walls.transform.localScale          = new(mapSize.x/10, mapSize.y, mapSize.z/10);
 
             Debug.Log("Updating Ground Material");
             groundMat.SetVector("_Map_Size", mapSize);
             groundMat.SetTexture("_Ground_Texture", groundTexture);
             groundMat.SetTexture("_Height_Texture", topoTexture);
+        }
+
+        if (updateHex) {
+            updateHex = false;
+            hexCam.orthographicSize = hexCamSize;
+            groundMat.SetFloat("_Hexcam_Size", hexCamSize);
+            groundMat.SetVector("_Hexcam_Pos", hexCam.transform.position);
         }
     }
 }

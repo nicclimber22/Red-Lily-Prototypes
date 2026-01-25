@@ -49,6 +49,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 61c72f2dccd8c5fea8c095881fea94bc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_cbd8252d8ab84004896353cad0e0b97d_Texture_1_Texture2D:
+        m_Texture: {fileID: 8400000, guid: 5cb0d4775bd809e69a18ac616284ac33, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_591bdc80dd1441928123718f42296a8c_Out_0_Texture2D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,11 +76,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _Height_Scale: 14.29
+    - _Hexcam_Size: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Heigh_Map: {r: -20, g: 10, b: 0, a: 0}
-    - _Map_Size: {r: 320, g: 32, b: 320, a: 0}
+    - _Hexcam_Pos: {r: 0, g: 0, b: 0, a: 0}
+    - _Map_Size: {r: 80, g: 6, b: 80, a: 0}
     - _X_Domain: {r: -500, g: 500, b: 0, a: 0}
     - _Y_Range: {r: 0, g: 40, b: 0, a: 0}
     - _Z_Domain: {r: -500, g: 500, b: 0, a: 0}
