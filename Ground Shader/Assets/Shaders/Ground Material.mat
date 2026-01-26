@@ -76,12 +76,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Height_Scale: 14.29
-    - _Hexcam_Size: 0
+    - _Hexcam_Size: 10
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Heigh_Map: {r: -20, g: 10, b: 0, a: 0}
-    - _Hexcam_Pos: {r: 0, g: 0, b: 0, a: 0}
+    - _Hexcam_Pos: {r: 35.62, g: 25.95, b: 28.09, a: 0}
     - _Map_Size: {r: 80, g: 6, b: 80, a: 0}
     - _X_Domain: {r: -500, g: 500, b: 0, a: 0}
     - _Y_Range: {r: 0, g: 40, b: 0, a: 0}
