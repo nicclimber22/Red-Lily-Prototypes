@@ -12,6 +12,8 @@ public class Map : MonoBehaviour {
 
     public Texture2D groundTexture;
     public Texture2D topoTexture;
+    private Texture2D topoTextureCPU;
+
 
     public bool updateTerrain = false;
 
@@ -27,29 +29,19 @@ public class Map : MonoBehaviour {
 
 
 
-    // public static float GetHeightAt(Transform transform) {
-    //     if (instance == null) return 0;
-    //     return instance._GetHeightAt(transform);
-    // }
+    public static float GetHeightAt(Transform transform) {
+        if (instance == null) return 0;
+        return instance._GetHeightAt(transform);
+    }
 
 
-    // // this function will need to be updated to fit the map size
-    // private float _GetHeightAt(Transform transform) {
-    //     if (elevationTextureCPU == null 
-    //         || elevationTextureCPU.width != elevationTexture.width 
-    //         || elevationTextureCPU.height != elevationTextureCPU.height) {
-    //         elevationTextureCPU = new(elevationTexture.width, elevationTexture.height);
-    //     }
-
-    //     Vector2 xz = new (transform.position.x - 200f / 500f, transform.position.z - 200f / 500f);
-    //     Vector2 corner0 = new(-200, -200);
-    //     Vector2 corner1 = new(200, 200);
-    //     Vector2 uv = (xz - corner0) / (corner1 - corner0);
-
-    //     Color color = elevationTextureCPU.GetPixelBilinear(uv.x, uv.y);
-    //     float elevation = color.r + color.g / 256f;
-    //     return heightScale * elevation;
-    // }
+    // this function will need to be updated to fit the map size
+    private float _GetHeightAt(Transform transform) {
+        Vector2 uv = new(transform.position.x / mapSize.x, transform.position.z / mapSize.z);
+        Color color = topoTexture.GetPixelBilinear(uv.x, uv.y);
+        float elevation = Mathf.Pow(color.r, 2.2f) * mapSize.y; // need to do gamma correction here ???
+        return elevation;
+    }
 
     
     void Start() {

@@ -11,7 +11,7 @@ public class BillBoard : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        float elevation = TerrainManager.GetHeightAt(transform) + verticalOffset;
+        float elevation = Map.GetHeightAt(transform) + verticalOffset;
         transform.position = new(transform.position.x, elevation, transform.position.z);
 
         Camera sceneCam = SceneView.lastActiveSceneView.camera;
