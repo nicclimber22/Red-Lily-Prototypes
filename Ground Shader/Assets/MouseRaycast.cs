@@ -6,8 +6,8 @@ public class MouseRaycast : MonoBehaviour {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public float raycastDist = 32f;
-    public float raycastFirstPassSamples = 16f;
-    public float raycastSecondPassSamples = 16f;
+    public int divsPerPass = 16;
+    public int numPasses = 3;
 
     public GameObject mouseSphere;
 
@@ -18,53 +18,52 @@ public class MouseRaycast : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         Camera cam;
+        Vector3 pos;
+        Vector3 dir;
         #if UNITY_EDITOR
             cam = SceneView.lastActiveSceneView.camera;
+            pos = cam.transform.position;
+            dir = cam.transform.forward;
+            // HandleUtility.GUIPointToWorldRay()
         #else
             cam = Camera.main;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            pos = ray.origin;
+            dir = ray.dir.normalized;
         #endif
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        Vector3 rayPos = ray.origin;
-        Vector3 rayDir = ray.direction.normalized;
 
         float left = 0f;
         float right = raycastDist;
 
+        mouseSphere.transform.position = pos + dir * right;
 
-        if (rayPos.y < Map.GetHeightAt(rayPos)) return; // check if camera is below ground and dont raycast
+
+        if (pos.y < Map.GetHeightAt(pos)) return; // check if camera is below ground and dont raycast
         
-        // narrow search bounds
-        for (int i = 0; i < raycastFirstPassSamples; i++) {
-            float dist = Mathf.Lerp(left, right, (i+1) / raycastFirstPassSamples);
-            Vector3 point = rayPos + dist * rayDir;
-            if (point.y < Map.GetHeightAt(point)) {
-                left += i * right / raycastFirstPassSamples;
-                right = dist;
-                left = right - (right - left) / raycastFirstPassSamples;
+        // Multi-scale ray march towards the ground. 
+        // Stops when hits the ground and backtracks to refine estimate
+        for (int j = 0; j < numPasses; j++) {
+            for (int i = 0; i < divsPerPass; i++) {
+                float dist = Mathf.Lerp(left, right, (i+1) / (float)divsPerPass);
+                Vector3 point = pos + dist * dir;
+                if (point.y < Map.GetHeightAt(point)) {
+                    right = dist;
+                    break;
+                }
             }
-        }
-
-        // refine search
-        for (int i = 0; i < raycastSecondPassSamples; i++) {
-            float dist = Mathf.Lerp(left, right, (i+1) / raycastSecondPassSamples);
-            Vector3 point = rayPos + dist * rayDir;
-            if (point.y < Map.GetHeightAt(point)) {
-                left += i * right / raycastSecondPassSamples;
-                right = dist;
-                left = right - (right - left) / raycastSecondPassSamples;
-            }
+            left = right - (right - left) / divsPerPass;
         }
 
 
-        // linear interpolate for more accuracy
+        // // linear interpolate for more accuracy
 
 
         // move the mouse object
         if (right != raycastDist) {
             float dist = (left + right) / 2;
-            Vector3 hitPos = rayPos + dist * rayDir;
+            Vector3 hitPos = pos + right * dir;
             mouseSphere.transform.position = hitPos;
-            Debug.Log(hitPos);
+            Debug.Log($"Raycast hit {hitPos}");
         }
 
 
