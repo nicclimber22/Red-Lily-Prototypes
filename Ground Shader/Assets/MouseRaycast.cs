@@ -6,6 +6,7 @@ public class MouseRaycast : MonoBehaviour {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public float raycastDist = 32f;
+    public int divsPerFirstPass = 64;
     public int divsPerPass = 16;
     public int numPasses = 3;
 
@@ -43,15 +44,16 @@ public class MouseRaycast : MonoBehaviour {
         // Multi-scale ray march towards the ground. 
         // Stops when hits the ground and backtracks to refine estimate
         for (int j = 0; j < numPasses; j++) {
-            for (int i = 0; i < divsPerPass; i++) {
-                float dist = Mathf.Lerp(left, right, (i+1) / (float)divsPerPass);
+            float divisor = j == 0 ? divsPerFirstPass : divsPerPass;
+            for (int i = 0; i < divisor; i++) {
+                float dist = Mathf.Lerp(left, right, (i+1) / divisor);
                 Vector3 point = pos + dist * dir;
                 if (point.y < Map.GetHeightAt(point)) {
+                    left = Mathf.Lerp(left, right, i / divisor);
                     right = dist;
                     break;
                 }
             }
-            left = right - (right - left) / divsPerPass;
         }
 
 

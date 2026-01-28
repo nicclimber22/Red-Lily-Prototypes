@@ -41,9 +41,10 @@ public class Map : MonoBehaviour {
 
     // this function will need to be updated to fit the map size
     private float _GetHeightAt(Vector3 position) {
-        Vector2 uv = new(position.x / mapSize.x, position.z / mapSize.z);
+        Vector2 uv = new(position.x / (mapSize.x+0.5f), position.z / (mapSize.z+0.5f));
         Color color = topoTexture.GetPixelBilinear(uv.x, uv.y);
-        float elevation = Mathf.Pow(color.r, 2.2f) * mapSize.y; // need to do gamma correction here ???
+        // float elevation = Mathf.Pow(color.r, 2.2f) * mapSize.y; // need to do gamma correction here ???
+        float elevation = color.r * mapSize.y; // use directional lightmap to get rid of gamma correction in the shader
         return elevation;
     }
 
