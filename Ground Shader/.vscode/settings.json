@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Ground Shader.sln"
+    "dotnet.defaultSolution": "Ground Shader.slnx"
 }
