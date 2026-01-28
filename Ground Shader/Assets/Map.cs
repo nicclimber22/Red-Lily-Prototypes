@@ -31,13 +31,17 @@ public class Map : MonoBehaviour {
 
     public static float GetHeightAt(Transform transform) {
         if (instance == null) return 0;
-        return instance._GetHeightAt(transform);
+        return instance._GetHeightAt(transform.position);
     }
 
+    public static float GetHeightAt(Vector3 position) {
+        if (instance == null) return 0;
+        return instance._GetHeightAt(position);
+    }
 
     // this function will need to be updated to fit the map size
-    private float _GetHeightAt(Transform transform) {
-        Vector2 uv = new(transform.position.x / mapSize.x, transform.position.z / mapSize.z);
+    private float _GetHeightAt(Vector3 position) {
+        Vector2 uv = new(position.x / mapSize.x, position.z / mapSize.z);
         Color color = topoTexture.GetPixelBilinear(uv.x, uv.y);
         float elevation = Mathf.Pow(color.r, 2.2f) * mapSize.y; // need to do gamma correction here ???
         return elevation;
