@@ -6,6 +6,7 @@ public class character : MonoBehaviour
 {
     // first things first : make sure player is selectable
     private bool _isSelected = false;
+    private float MAX_MOVE_DISTANCE = 2.5f;
 
     [SerializeField] private InputActionReference leftMouseClicked;
     [SerializeField] private Grid hexgrid;
@@ -36,23 +37,31 @@ public class character : MonoBehaviour
         Vector2 mousePointerPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector3Int tileMapPos = land.WorldToCell(mousePointerPos);
         Vector3Int playerPos = land.WorldToCell(this.transform.position);
+
         if (_isSelected == true)
         {
+            // Check if tile is walkable
             if (land.GetTile(tileMapPos) == null) return;
+            
+            // Deselect player
             if (tileMapPos == playerPos)
             {
                 _isSelected = false;
                 return;
             }
+
+            if (Vector3Int.Distance(tileMapPos, playerPos) > MAX_MOVE_DISTANCE) return;
+            
             Vector2 closestPlayerGridPos = land.CellToLocal(tileMapPos);
             transform.position = closestPlayerGridPos;
             _isSelected = false;
             return;
         }
+
+        // Select player
         if (tileMapPos == playerPos)
         {
             _isSelected = true;
-            Debug.Log("This character is selected!");
         }
 
     }
