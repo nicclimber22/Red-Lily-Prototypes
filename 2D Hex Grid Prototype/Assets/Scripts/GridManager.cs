@@ -25,7 +25,7 @@ public class GridManager : MonoBehaviour
         if (land.GetTile(tileMapPos) == null) highlightZone.color = Color.red;
         else highlightZone.color = Color.green;
         highlightZone.SetTile(prevCell, null);
-        prevCell = tileMapPos;
         highlightZone.SetTile(tileMapPos, tile);
+        prevCell = tileMapPos;
     }
 }
