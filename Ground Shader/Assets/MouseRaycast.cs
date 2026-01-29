@@ -7,8 +7,8 @@ public class MouseRaycast : MonoBehaviour {
 
     public float raycastDist = 32f;
     public int divsPerFirstPass = 64;
-    public int divsPerPass = 16;
-    public int numPasses = 3;
+    public int divsPerPass = 4;
+    public int numPasses = 4;
 
     public GameObject mouseSphere;
 
