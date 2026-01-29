@@ -1,0 +1,63 @@
+"Norman Softworx" Royalty Free Single Entity License.
+v1.0
+07/14/2025
+
+1. License Grant and or Agreement:
+	a. A license is granted upon purchase of game assets developed by "Norman Softworx". No agreement of sale is intended or offered. All works contained in a set of game assets developed by or distributed by "Norman Softworx" are the sole property of "Norman Softworx".
+	b. Seller and distributor "Norman Softworx" retains all rights and interests in and to all copyrights, trademarks, and intellectual property pertaining to game assets developed by or distributed by "Norman Softworx".
+	c. All rights and privileges in and to the licensed content that is not expressly granted in this agreement are retained by "Norman Softworx".
+	d. This license is a single entity license and may only provide access to licensed content owned by "Norman Softworx" to one authorized user (the buyer). License is not extensible to sub-contractors or associates hired for the purpose of working on creation of work  for distributions.
+	e. All sub-contractors or associates working on a work for distributions must obtain their own single entity license.
+	f. Licensee may modify licensed content and use modified content in a derived works. All modified derivatives are subject to the full terms of this agreement.
+	g. Licensee may use licensed content in an unlimited number of commercial or free works and derivates granted that the licensed content is not the primary feature of the commercial or free works and derivates.
+	h. Licensee is required to post or list usage of licensed content in a conspicuous manner in a credits section. A link to the licensed content must be made conspicuously visible along with a link to the grantor "Norman Softworx".
+
+2. Restrictions:
+	a. Licensed content used in any form in which it violates the restrictions stated herein is not allowed.
+	b. Licensed content may be used in the necessary works of a distributed work such as a game, a video, a streaming channel, a physical game, or a graphic novel where the licensed content is distinctly a minor portion of the overal derived work and cannot be the main focus.
+	c. Licensed content may not be used, sold, redistributed, transferred, or made available in any way to any third party, hired professional, sub-contractor, or automated system of any kind.
+	d. Licensed content may not be used in advertisements or promotional material of any kind except in cases where the derived work which uses licensed content is being advertised or promoted.
+	e. Licensed content may not be used for the development of logos, copyrighted material, trademarks, brands, service marks, or banners.
+	f. Licensed content may not be used in any way in which it has the potential to violate the law of any governing body.
+	g. Licensed content may not be superficially modified and sold as the primary focus of a product (ie: a derivative work must be in majority owned by the licensee where the licensed content is a minor portion of the works).
+	h. Licensed content may not be used in any industry or outlet that is related in any way to pornographic industries or sexual content.
+	i. Licensed content may not be used in any way to defame a person, a business, entity, a group of persons, or an organization.
+	j. Licensed content may not be used in the generation of NFTs (non-fungible tokens) or any block-chained oriented derived works.
+	k. Licensed content may not be used in any ai (artificial intelligence) derived works or included in any training sets with the purpose of developing ai (artificial intelligence) models.
+	l. Licensed content may not be included in any system, software, or framework that issues or generates derived works that includes the licensed content.
+
+3. Terms and Termination:
+	a. The agreement and or license contained herein are immediately terminated upon the willful or accidental violation of the terms outlined in this license.
+	b. Non compliance with the license grant, agreement, and restrictions is subject to immediate revocation of rights and privileges bestowed upon the licensee by this agreement.
+	c. Licensee must immediately remove all references and likeness to licensed content contained within any derived works upon the termination of license agreement.
+	d. Upon termination, licensee must make reasonable effort to eliminate any access to licensed content in circulation to third parties, hired professionals, and or sub-contractors that obtained wrongful access via licensee.
+	e. Upon termination, licensee must delete and or destroy all copies or references to copies of the licensed content or derived works that share the likeness of the licensed content from any location.
+
+4. Obligations:
+	a. You must credit all licensed content via a link to the licensed content and credit to distributor "Norman Softworx".
+	b. You are granted a license, "Norman Softworx" retains all rights to the licensed content.
+	c. All persons, groups of persons, hired professionals, sub-contractors, automated systems must obtain distinct and unique royalty free single entity liceses to the licensed content.
+	d. A royalty free single entity license is granted to the buyer of this licensed content.
+	e. License is rendered invalid upon the violation of any terms and agreements contained herein as it pertains to the licensed content.
+	d. Where this section 4 "Obligations" may be insufficient, sections 1, 2, 3 are to be referenced. Any provisions not expressed are to be remedied by sections 1, 2, 3.
+
+5. Summary:
+	a. This summary is an explanation of this license and does not over-ride sections 1, 2, 3, 4 of this license or agreement.
+	b. Only interpretations of terms contained in sections 1, 2, 3, 4 of this license agreement are official and valid binding agreements to the legal use of this licensed content.
+	c. You may use this licensed content for the development of derived works (the following list is a list of examples). All examples imply the licensed content is a minor portion of the derived works.
+		i. Video game.
+		ii. Video.
+		iii. Streaming channels.
+		iv. Physical game.
+		v. Graphic novel.
+	d. You may not use this licensed content, unrelated to derived works, for marketing material or branding content like logos, advertisements, or trademarks (the following list is a list of examples).
+		i. A logo or avatar representing a person or a business for profit and or not for profit.
+		ii. An advertisement video or advertisement issued in a physical publication.
+		ii. A copyrighted slogan or a trademark representing services or goods.
+	e. You may not use this licensed content in any way where the majority of the derived work is comprised of the licensed content (licensed content cannot be the main focus of derived works).
+		i. You may not superficially modify and re-distribute assets in any part for sale or for free (ie: change the color and distribute as a pack or single asset).
+		ii. Package derived works in such a way where the licensed content is easily accessible (ie: a distributed game has an exposed assets folder that can unpacked).
+		iii. Include in any system or framework that generates modular works where the licensed content is included (this would be akin to re-distribution).
+		iv. You may not include the licensed content in any open sourced project or libary.
+	f. You may not sell, transfer, or assign any rights to the licensed content to any sub-contractor, hired professional, person or group of persons.
+	
