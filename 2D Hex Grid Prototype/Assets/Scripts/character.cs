@@ -33,7 +33,9 @@ public class character : MonoBehaviour
     }
 
     private void Select(InputAction.CallbackContext obj)
-    {
+    { 
+        if (TurnManager.main.currentTurn != TurnManager.turn.PLAYERSTURN) return;
+
         Vector2 mousePointerPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector3Int tileMapPos = land.WorldToCell(mousePointerPos);
         Vector3Int playerPos = land.WorldToCell(this.transform.position);

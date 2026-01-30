@@ -1,18 +1,26 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
+    public static TurnManager main {get; private set;}
+
     public enum turn {PLAYERSTURN, ENEMYSTURN};
-    [SerializeField] private turn currentTurn;
+    public turn currentTurn;
     public int round = 0;
 
-    public static TurnManager inst;
+    [SerializeField] private GameObject endTurnButton;
+
+    // Ensure that only one version of this file is active at a time.
     private void Awake()
     {
-        if (inst == null)
+        if (main != null)
         {
-            inst = this;
+            Destroy(main.gameObject);
+            return;
         }
+        main = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
@@ -20,15 +28,14 @@ public class TurnManager : MonoBehaviour
         currentTurn = turn.PLAYERSTURN;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (currentTurn == turn.PLAYERSTURN) endTurnButton.SetActive(true);
+        else endTurnButton.SetActive(false);
     }
 
     public void OnEndTurnPressed()
     {
-        Debug.Log("Player has ended their turn");
         currentTurn = turn.ENEMYSTURN;
     }
 }
