@@ -5112,6 +5112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad09e7ee5817a214db5b96911217b3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::character
+  MAX_MOVE_DISTANCE: 2.5
   leftMouseClicked: {fileID: 1836050912}
   hexgrid: {fileID: 126293285}
 --- !u!1 &1105046507
@@ -19465,7 +19466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   currentTurn: 0
-  round: 0
   endTurnButton: {fileID: 33297437}
 --- !u!4 &1621101916
 Transform:
@@ -19691,6 +19691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad09e7ee5817a214db5b96911217b3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::character
+  MAX_MOVE_DISTANCE: 2.5
   leftMouseClicked: {fileID: 1836688776}
   hexgrid: {fileID: 126293285}
 --- !u!114 &1836050912

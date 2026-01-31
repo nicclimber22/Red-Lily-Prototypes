@@ -5,14 +5,19 @@ using UnityEngine.Tilemaps;
 public class character : MonoBehaviour
 {
     private bool _isSelected = false;
-    private float MAX_MOVE_DISTANCE = 2.5f;
+    private float MAX_MOVE_DISTANCE = 1.5f;
 
     [SerializeField] private InputActionReference leftMouseClicked;
     [SerializeField] private Grid hexgrid;
     private Tilemap land;
 
+    private CharacterStats stats;
+
     void Start()
     {
+        stats = this.gameObject.GetComponent<CharacterStats>();
+        MAX_MOVE_DISTANCE += stats.GetEndurance() / 4.0f; // I'm guessing the average agility will be 4?
+
         land = hexgrid.transform.GetChild(1).gameObject.GetComponent<Tilemap>();
 
         // Locks player position to the center of the nearest cell
