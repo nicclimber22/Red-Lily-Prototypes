@@ -4,7 +4,6 @@ using UnityEngine.Tilemaps;
 
 public class character : MonoBehaviour
 {
-    // first things first : make sure player is selectable
     private bool _isSelected = false;
     private float MAX_MOVE_DISTANCE = 2.5f;
 
@@ -22,6 +21,23 @@ public class character : MonoBehaviour
         transform.position = closestPlayerGridPos;
     }
 
+    public bool CheckIfSelected()
+    {
+        return _isSelected;
+    }
+
+    public Vector3Int GetCharacterCellPos()
+    {
+        return land.WorldToCell(this.transform.position);
+    }
+
+    public float GetMaxMoveDist()
+    {
+        return MAX_MOVE_DISTANCE;
+    }
+
+
+    // The below code is for when the player clicks on a member of a unit
     void OnEnable()
     {
         leftMouseClicked.action.started += Select;
@@ -65,6 +81,5 @@ public class character : MonoBehaviour
         {
             _isSelected = true;
         }
-
     }
 }

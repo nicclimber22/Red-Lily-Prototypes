@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
@@ -7,7 +6,6 @@ public class TurnManager : MonoBehaviour
 
     public enum turn {PLAYERSTURN, ENEMYSTURN};
     public turn currentTurn;
-    public int round = 0;
 
     [SerializeField] private GameObject endTurnButton;
 
