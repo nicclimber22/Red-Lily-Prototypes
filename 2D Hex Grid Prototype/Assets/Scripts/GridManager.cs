@@ -4,6 +4,10 @@ using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
+    /*
+        Pretty sure this class shouldn't be a singleton because it changes each scene.
+        Maybe it should be and I'm just an idiot idk.
+    */
     [SerializeField] private Tilemap land;
     [SerializeField] private Tilemap highlightZone;
     [SerializeField] private TileBase tile;
@@ -17,6 +21,13 @@ public class GridManager : MonoBehaviour
         HighlightMouseHover();
     }
 
+    /*
+        Adds a visual representation to the tile the player is hovering their mouse over.
+            A white tile means no player is selected,
+            A green tile means that a player is selected and they can move to that tile,
+            A red tile means that the player is selected BUT cannot move to that tile.
+            If the tile is a different color something terrible has happened and we are all going to die.
+    */
     private void HighlightMouseHover()
     {
         Vector2 mousePointerPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());

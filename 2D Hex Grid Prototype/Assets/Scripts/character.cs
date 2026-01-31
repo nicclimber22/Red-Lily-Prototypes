@@ -53,6 +53,14 @@ public class character : MonoBehaviour
         leftMouseClicked.action.started -= Select;
     }
 
+    /*
+        Locks onto a player if the tile they are standing on is clicked.
+        If they are, allow them to move based on MAX_MOVE_DISTANCE.
+        Click on the tile the character is standing on again to deselect / lock off of them.
+
+        TODO add ability for player to choose other actions 
+        (Attack, Use Item, etc.) when character is selected
+    */
     private void Select(InputAction.CallbackContext obj)
     { 
         if (TurnManager.main.currentTurn != TurnManager.turn.PLAYERSTURN) return;

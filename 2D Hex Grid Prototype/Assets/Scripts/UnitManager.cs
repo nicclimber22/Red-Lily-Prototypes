@@ -1,3 +1,11 @@
+/*
+    Manages the currently active units.
+    To make sure a unit is active:
+        - Attach this script to an empty object
+        - Make the player characters children objects
+        - MAKE SURE they have the character script attached to them.
+*/
+
 using System.Collections.Generic;
 using UnityEngine;
 

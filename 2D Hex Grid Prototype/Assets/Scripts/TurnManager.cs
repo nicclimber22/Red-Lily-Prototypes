@@ -1,3 +1,9 @@
+/*
+    This class serves as a universal source of truth
+    regarding the state of the game.
+    Refer to here and here alone for the current turn.
+*/
+
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
