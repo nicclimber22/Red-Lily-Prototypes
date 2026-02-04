@@ -42,4 +42,10 @@ public class TurnManager : MonoBehaviour
     {
         currentTurn = turn.ENEMYSTURN;
     }
+
+    public void ChangeTurn()
+    {
+        if (currentTurn == turn.PLAYERSTURN) currentTurn = turn.ENEMYSTURN;
+        else currentTurn = turn.PLAYERSTURN;
+    }
 }

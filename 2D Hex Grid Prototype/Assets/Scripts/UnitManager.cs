@@ -12,7 +12,7 @@ using UnityEngine;
 public class UnitManager : MonoBehaviour
 {
     public static UnitManager main {get; private set;}
-    private List<GameObject> characters = new List<GameObject>();
+    public List<GameObject> characters = new List<GameObject>();
 
     private void Awake()
     {
