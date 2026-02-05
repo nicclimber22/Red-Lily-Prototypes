@@ -199,7 +199,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -621,7 +621,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2532,7 +2532,7 @@ Tilemap:
   - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
+      m_TileIndex: 1
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
@@ -4451,9 +4451,9 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: b32dd5aab4266604fabdc6458e0043a7, type: 2}
-  - m_RefCount: 262
+  - m_RefCount: 263
     m_Data: {fileID: 11400000, guid: 5a8f5cdd35a6e3a4bb286f9ba31dfa48, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -4499,8 +4499,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -30, y: -24, z: 0}
-  m_Size: {x: 50, y: 47, z: 1}
+  m_Origin: {x: -30, y: -25, z: 0}
+  m_Size: {x: 94, y: 105, z: 1}
   m_TileAnchor: {x: 0, y: 0, z: 0}
   m_TileOrientation: 6
   m_TileOrientationMatrix:
@@ -4623,7 +4623,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -19903,7 +19903,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -30, y: -24, z: 0}
-  m_Size: {x: 50, y: 47, z: 1}
+  m_Size: {x: 86, y: 114, z: 1}
   m_TileAnchor: {x: 0, y: 0, z: 0}
   m_TileOrientation: 6
   m_TileOrientationMatrix:
@@ -20054,11 +20054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 00f2068fb6da19449bb9b27dc4a6d0a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7134001
+      value: -4.03
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 00f2068fb6da19449bb9b27dc4a6d0a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4155
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 00f2068fb6da19449bb9b27dc4a6d0a0, type: 3}
       propertyPath: m_LocalPosition.z
