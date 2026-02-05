@@ -1,17 +1,9 @@
-/*
-    Manages the currently active units.
-    To make sure a unit is active:
-        - Attach this script to an empty object
-        - Make the player characters children objects to the empty object
-        - MAKE SURE they have the character script attached to them.
-*/
-
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitManager : MonoBehaviour
+public class EnemyUnitManager : MonoBehaviour
 {
-    public static UnitManager main {get; private set;}
+    public static EnemyUnitManager main {get; private set;}
     public List<GameObject> characters = new List<GameObject>();
 
     private void Awake()
@@ -31,7 +23,7 @@ public class UnitManager : MonoBehaviour
         if(this.transform.childCount > 0) {
             foreach (Transform child in this.transform)
             {
-                if (child.CompareTag("character"))
+                if (child.CompareTag("enemy"))
                 {
                     characters.Add(child.gameObject);
                 }
@@ -39,16 +31,14 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-
-    public GameObject CheckIfAnySelected()
+    void Update()
     {
-        foreach (GameObject dude in characters)
+        if (TurnManager.main.currentTurn != TurnManager.turn.ENEMYSTURN) return;
+        foreach (GameObject enemy in characters)
         {
-            if (dude.GetComponent<character>().CheckIfSelected())
-            {
-                return dude;
-            }
+            enemy.GetComponent<enemy>()?.OnCharacterCalled();
         }
-        return null;
+        TurnManager.main.ChangeTurn();
     }
+
 }

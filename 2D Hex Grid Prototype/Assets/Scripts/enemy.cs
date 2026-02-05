@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -5,8 +6,7 @@ public class enemy : MonoBehaviour
 {
     [SerializeField] private Grid hexgrid;
     private Tilemap land;
-    private bool canMove = false;
-
+    private List<GameObject> detectedCharacters = new List<GameObject>();
     void Start()
     {
         land = hexgrid.transform.GetChild(1).gameObject.GetComponent<Tilemap>();
@@ -21,6 +21,7 @@ public class enemy : MonoBehaviour
         transform.position = closestPlayerGridPos;
     }
 
+    /*
     void Update()
     {
         if (TurnManager.main.currentTurn != TurnManager.turn.ENEMYSTURN) return;
@@ -38,4 +39,35 @@ public class enemy : MonoBehaviour
             }
         }
     }
+    */
+
+    public void OnCharacterCalled()
+    {
+        string foundList = this.gameObject.name + " has found: ";
+        foreach (GameObject character in detectedCharacters)
+        {
+            foundList += character.name + ", ";
+        }
+        Debug.Log(foundList);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("character"))
+        {
+            Debug.Log("Character found!");
+            detectedCharacters.Add(collision.gameObject);
+        }
+        else Debug.Log(collision.gameObject.name);    
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("character"))
+        {
+            Debug.Log("Character lost!");
+            detectedCharacters.Remove(collision.gameObject);
+        }
+    }
+
 }
