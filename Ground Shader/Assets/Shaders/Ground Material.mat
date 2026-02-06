@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Ground_Texture:
-        m_Texture: {fileID: 2800000, guid: 61c72f2dccd8c5fea8c095881fea94bc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e8c23516211c946f85603bd5b0e3f5d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Height_Normal_Texture:
@@ -81,8 +81,8 @@ Material:
     - _QueueOffset: 0
     m_Colors:
     - _Heigh_Map: {r: -20, g: 10, b: 0, a: 0}
-    - _Hexcam_Pos: {r: 156.86, g: 43, b: 142.97, a: 0}
-    - _Map_Size: {r: 320, g: 30, b: 320, a: 0}
+    - _Hexcam_Pos: {r: 34.3, g: 15, b: 22.2, a: 0}
+    - _Map_Size: {r: 200, g: 20, b: 100, a: 0}
     - _X_Domain: {r: -500, g: 500, b: 0, a: 0}
     - _Y_Range: {r: 0, g: 40, b: 0, a: 0}
     - _Z_Domain: {r: -500, g: 500, b: 0, a: 0}
