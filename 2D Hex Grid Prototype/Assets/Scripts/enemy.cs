@@ -6,7 +6,13 @@ public class enemy : MonoBehaviour
 {
     [SerializeField] private Grid hexgrid;
     private Tilemap land;
-    private List<GameObject> detectedCharacters = new List<GameObject>();
+    private readonly List<GameObject> detectedCharacters = new();
+
+    [Header("Stats")]
+    [SerializeField] private float attackRange = 1;
+    [SerializeField] private float damage = 1.0f;
+
+
     void Start()
     {
         land = hexgrid.transform.GetChild(1).gameObject.GetComponent<Tilemap>();
@@ -21,34 +27,39 @@ public class enemy : MonoBehaviour
         transform.position = closestPlayerGridPos;
     }
 
-    /*
-    void Update()
+    // Method to be changed to an actual pathfinding alogrithm
+    // Also method doesn't check to see if new position is a valid tile
+    private void MoveTowards(GameObject target)
     {
-        if (TurnManager.main.currentTurn != TurnManager.turn.ENEMYSTURN) return;
-        foreach (GameObject character in UnitManager.main.characters)
-        {
-
-            if(Vector3.Distance(character.transform.position, this.transform.position) < 3)
-            {
-                float xDist = character.transform.position.x - this.transform.position.x;
-                float yDist = character.transform.position.y - this.transform.position.y;
-                Debug.Log(xDist + " " + yDist);
-                this.transform.position = new Vector3(this.transform.position.x + (xDist < 0 ? -1 : 1) * (xDist != 0 ? xDist / xDist : 0) , this.transform.position.y + (yDist < 0 ? -1 : 1) * (yDist != 0 ? yDist / yDist : 0), this.transform.position.z);
-                LockToCell();
-                TurnManager.main.ChangeTurn();
-            }
-        }
+        float xDist = target.transform.position.x - this.transform.position.x;
+        float yDist = target.transform.position.y - this.transform.position.y;
+        this.transform.position = new Vector3(this.transform.position.x + (xDist < 0 ? -1 : 1) * (xDist != 0 ? xDist / xDist : 0) , this.transform.position.y + (yDist < 0 ? -1 : 1) * (yDist != 0 ? yDist / yDist : 0), this.transform.position.z);
+        LockToCell();
     }
-    */
 
-    public void OnCharacterCalled()
+    public void MakeChoice()
     {
-        string foundList = this.gameObject.name + " has found: ";
+        GameObject closestPlayer = null;
+        if (detectedCharacters.Count == 0) return;
         foreach (GameObject character in detectedCharacters)
         {
-            foundList += character.name + ", ";
+            if (closestPlayer == null) closestPlayer = character;
+            if (Vector3.Distance(character.transform.position, this.transform.position) < Vector3.Distance(closestPlayer.transform.position, this.transform.position))
+            {
+                closestPlayer = character;
+            }
         }
-        Debug.Log(foundList);
+        if (closestPlayer != null) 
+        {
+            if (Vector3.Distance(closestPlayer.transform.position, this.transform.position) <= attackRange)
+            {
+                Debug.Log("You have been damaged for " + damage); // Actual damage implementation will be done... later!
+            }
+            else
+            {
+                MoveTowards(closestPlayer);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -57,8 +68,7 @@ public class enemy : MonoBehaviour
         {
             Debug.Log("Character found!");
             detectedCharacters.Add(collision.gameObject);
-        }
-        else Debug.Log(collision.gameObject.name);    
+        } 
     }
 
     void OnTriggerExit2D(Collider2D collision)

@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyUnitManager : MonoBehaviour
 {
     public static EnemyUnitManager main {get; private set;}
-    public List<GameObject> characters = new List<GameObject>();
+    public List<GameObject> characters = new();
 
     private void Awake()
     {
@@ -14,7 +14,6 @@ public class EnemyUnitManager : MonoBehaviour
             return;
         }
         main = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
@@ -36,7 +35,7 @@ public class EnemyUnitManager : MonoBehaviour
         if (TurnManager.main.currentTurn != TurnManager.turn.ENEMYSTURN) return;
         foreach (GameObject enemy in characters)
         {
-            enemy.GetComponent<enemy>()?.OnCharacterCalled();
+            enemy.GetComponent<enemy>()?.MakeChoice();
         }
         TurnManager.main.ChangeTurn();
     }

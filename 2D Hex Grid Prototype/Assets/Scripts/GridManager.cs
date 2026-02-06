@@ -9,12 +9,21 @@ public class GridManager : MonoBehaviour
         Maybe it should be and I'm just an idiot idk.
     */
     [SerializeField] private Tilemap land;
+    private BoundsInt landBounds;
+    private TileBase[] landTiles;
     [SerializeField] private Tilemap highlightZone;
     [SerializeField] private TileBase tile;
 
     private float ALPHA = 0.5f;
 
     private Vector3Int prevCell;
+
+    void Start()
+    {
+        land.CompressBounds();
+        landBounds = land.cellBounds;
+        landTiles = land.GetTilesBlock(landBounds);
+    }
 
     void Update()
     {
@@ -54,5 +63,10 @@ public class GridManager : MonoBehaviour
             return;
         }
         else highlightZone.color = new Color(0.0f, 1.0f, 0.0f, ALPHA);
+    }
+
+    public TileBase[] GetLandTileBase()
+    {
+        return landTiles;
     }
 }

@@ -5245,6 +5245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   hexgrid: {fileID: 126293285}
+  attackRange: 4
+  damage: 1
 --- !u!58 &887434732
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5714,6 +5716,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemy
   hexgrid: {fileID: 126293285}
+  attackRange: 1
+  damage: 1
 --- !u!58 &1221979162
 CircleCollider2D:
   m_ObjectHideFlags: 0
