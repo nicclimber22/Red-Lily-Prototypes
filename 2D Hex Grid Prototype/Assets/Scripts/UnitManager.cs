@@ -11,6 +11,8 @@ using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
+    [SerializeField] private GameObject sneakButton;
+    [SerializeField] private GameObject moveButton;
     public static UnitManager main {get; private set;}
     public List<GameObject> characters = new List<GameObject>();
 
@@ -39,6 +41,20 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        GameObject player = CheckIfAnySelected();
+        if (player != null)
+        {
+            sneakButton.SetActive(true);
+            moveButton.SetActive(true);
+        }
+        else
+        {
+            sneakButton.SetActive(false);
+            moveButton.SetActive(false);
+        }
+    }
 
     public GameObject CheckIfAnySelected()
     {
@@ -50,5 +66,23 @@ public class UnitManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void OnSneakPressed()
+    {
+        GameObject selectedCharacter = CheckIfAnySelected();
+        if (selectedCharacter != null)
+        {
+            selectedCharacter.GetComponent<character>().ToggleSneak();
+        }
+    }
+
+    public void OnMovePressed()
+    {
+        GameObject selectedCharacter = CheckIfAnySelected();
+        if (selectedCharacter != null)
+        {
+            selectedCharacter.GetComponent<character>().ToggleMovement();
+        }
     }
 }

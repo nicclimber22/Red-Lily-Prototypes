@@ -4,13 +4,14 @@ using UnityEngine.Tilemaps;
 
 public class character : MonoBehaviour
 {
-    private bool _isSelected = false;
-    private float MAX_MOVE_DISTANCE = 1.5f;
 
     [SerializeField] private InputActionReference leftMouseClicked;
     [SerializeField] private Grid hexgrid;
+    private bool _isSelected = false;
+    private bool _isSneaking = false;
+    private bool _movementEnabled = false;
+    private float MAX_MOVE_DISTANCE = 1.5f;
     private Tilemap land;
-
     private CharacterStats stats;
 
     void Start()
@@ -26,9 +27,34 @@ public class character : MonoBehaviour
         transform.position = closestPlayerGridPos;
     }
 
+    public void ToggleSelected()
+    {
+        _isSelected = !_isSelected;
+    }
+
     public bool CheckIfSelected()
     {
         return _isSelected;
+    }
+
+    public void ToggleSneak()
+    {
+        if (_isSelected) _isSneaking = !_isSneaking;
+    }
+
+    public bool CheckIfSneaking()
+    {
+        return _isSneaking;
+    }
+
+    public bool checkIfMovementEnabled()
+    {
+        return _movementEnabled;
+    }
+
+    public void ToggleMovement()
+    {
+        if (_isSelected) _movementEnabled = !_movementEnabled;
     }
 
     public Vector3Int GetCharacterCellPos()
@@ -69,7 +95,7 @@ public class character : MonoBehaviour
         Vector3Int tileMapPos = land.WorldToCell(mousePointerPos);
         Vector3Int playerPos = land.WorldToCell(this.transform.position);
 
-        if (_isSelected == true)
+        if (_movementEnabled == true)
         {
             // Check if tile is walkable
             if (land.GetTile(tileMapPos) == null) return;
@@ -78,6 +104,7 @@ public class character : MonoBehaviour
             if (tileMapPos == playerPos)
             {
                 _isSelected = false;
+                _movementEnabled = false;
                 return;
             }
 
@@ -86,6 +113,7 @@ public class character : MonoBehaviour
             Vector2 closestPlayerGridPos = land.CellToLocal(tileMapPos);
             transform.position = closestPlayerGridPos;
             _isSelected = false;
+            _movementEnabled = false;
             return;
         }
 

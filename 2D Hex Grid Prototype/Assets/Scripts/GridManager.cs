@@ -52,7 +52,7 @@ public class GridManager : MonoBehaviour
     private void chooseColor(Vector3Int tileMapPos)
     {
         GameObject selectedCharacter = UnitManager.main.CheckIfAnySelected();
-        if (selectedCharacter == null)
+        if (selectedCharacter == null || selectedCharacter.GetComponent<character>().checkIfMovementEnabled() == false)
         {
             highlightZone.color = new Color(1.0f, 1.0f, 1.0f, ALPHA);
             return;

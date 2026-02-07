@@ -62,12 +62,24 @@ public class enemy : MonoBehaviour
         }
     }
 
+    bool LookForPlayer(character player)
+    {
+        if (player.CheckIfSneaking() == true)
+        {
+            return false;
+        }
+        return true;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("character"))
+        character player = collision.GetComponent<character>();
+        if (player != null)
         {
-            Debug.Log("Character found!");
-            detectedCharacters.Add(collision.gameObject);
+            if (LookForPlayer(player) == true) {
+                Debug.Log("Character found!");
+                detectedCharacters.Add(collision.gameObject);
+            }
         } 
     }
 
